@@ -1,0 +1,64 @@
+---
+import taichi from "/taichi.png";
+---
+
+<div class="relative mx-12 flex flex-col items-center justify-center">
+  <h1 class="text-xl">
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt, a?
+  </h1>
+  <div class="relative">
+    <p id="anim-p" class="p-6 text-lg">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui veritatis
+      nemo fugiat natus voluptas exercitationem <br /><br />oluta dolores quam
+      totam eaque voluptate, harum modi voluptatibus molestias maxime
+      consectetur nihil dolor doloremque minus nisi non. Qui alias iure officia,<br
+      /><br /> molestias eveniet officiis nemo illo molestiae, ratione inventore
+      soluta necessitatibus vitae voluptate sit?
+    </p>
+  </div>
+  <div class="flex justify-center pt-12 text-center mb-12">
+    <div class="w-32">
+      <h2>Posts</h2>
+      <p id="posts" class="text-xl font-bold">123</p>
+    </div>
+    <div class="w-32">
+      <h2>Subs</h2>
+      <p id="subs" class="text-xl font-bold">123</p>
+    </div>
+    <div class="w-32">
+      <h2>Reviews</h2>
+      <p id="reviews" class="text-xl font-bold">123</p>
+    </div>
+  </div>
+
+  <div class="relative">
+    <img class="h-full" src={taichi} alt="Taichi" />
+  </div>
+</div>
+
+<div class="mt-12 h-6 w-full bg-black"></div>
+
+<script>
+  function incrementCounter(
+    selector: string,
+    current: number,
+    target: number,
+    duration: number,
+    letter: string = ""
+  ) {
+    let counter = document.getElementById(selector);
+    let stepTime = Math.abs(Math.floor(duration / target));
+    if (current < target && counter) {
+      current++;
+      counter.innerText = current.toString() + letter;
+      setTimeout(
+        () => incrementCounter(selector, current, target, duration, letter),
+        stepTime
+      );
+    }
+  }
+
+  incrementCounter("posts", 0, 85, 1000);
+  incrementCounter("subs", 0, 120, 1000, "k");
+  incrementCounter("reviews", 0, 50, 1000);
+</script>
